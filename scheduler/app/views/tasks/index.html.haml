@@ -1,0 +1,40 @@
+.container
+  .row.control-buttons
+    %button.task-create.btn.btn-primary new task
+  .row
+    %table.table.table-bordered.table-striped.table-condensed
+      %thead
+        %tr
+          %th
+            name
+          %th
+            start
+          %th
+            end
+          %th
+            path
+          %th
+            response
+          %th
+            mon
+          %th
+            tue
+          %th
+            wed
+          %th
+            thu
+          %th
+            fri
+          %th
+            sat
+          %th
+            sun
+          %th
+            actions
+        %tbody#taskTableRows
+          =render partial: 'table'
+    .row
+      -#@tasks.each do |task|
+        =#render partial: 'tasks/form', locals: {task: task}
+
+=render partial: 'modals/large'

@@ -1,0 +1,5 @@
+$('#taskTableRows').html("<%= escape_javascript(render 'table') %>");
+triggerTooltips();
+triggerPopovers();
+$('.modal').modal('hide');
+alert('Operation successful');

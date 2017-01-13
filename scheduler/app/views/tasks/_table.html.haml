@@ -1,0 +1,26 @@
+-@tasks.each do |task|
+  %tr
+    -(%w[name start_date end_date executable_path]).each do |key|
+      %td
+        =task[key]
+    %td{class: task_response_class(task['responses']), "data-html" => "true", "data-toggle" => "popover", "data-container" => "body", 'data-placement' => "bottom", "data-content" => task_response_popover(task['responses'])}
+      =task['responses'].present? ? fa_icon('caret-down') : nil
+      =task['responses'].try(:first).try(:[], 'created_at').try(:localtime).try(:strftime, '%Y-%m-%d %H:%M:%S')
+    -(0..6).each do |weekday|
+      -if task['schedules'][weekday]
+        %td.background-success{"data-html" => "true", "data-toggle" => "tooltip", title: task['schedules'][weekday].map{|hour| hour.to_s + ":00" }.join('</br>')}
+          =fa_icon 'check'
+      -else
+        %td
+          ='-'
+    %td.nopadding
+      %button.task-edit.btn.btn-primary.col-xs-4.button-table-action.nopadding{target: task['id']}
+        =fa_icon 'edit'
+      %button.task-delete.btn.btn-danger.col-xs-4.button-table-action.nopadding{target: task['id']}
+        =fa_icon 'trash'
+      %button.task-run.btn.btn-info.col-xs-4.button-table-action.nopadding{target: task['id']}
+        =fa_icon 'mail-reply-all'  
+%tr
+  %td.nopadding{colspan: 12}
+    %button.task-create.btn.btn-primary.col-xs-12.button-table-action.nopadding
+      =fa_icon 'plus'

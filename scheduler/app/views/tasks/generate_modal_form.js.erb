@@ -1,0 +1,3 @@
+$('#modalMainLg .modal-title').html('New Task');
+$('#modalMainLg .modal-body').html("<%= escape_javascript(render partial: 'form', locals: {task: @task}) %>");
+$('#modalMainLg').modal('show');

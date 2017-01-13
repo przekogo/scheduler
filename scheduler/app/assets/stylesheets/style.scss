@@ -1,0 +1,26 @@
+tr, th, td{
+  height: 3em;
+  text-align: center;
+}
+.background-success{
+  background-color: #d9edf7;
+}
+.clickable:hover{
+  cursor: pointer;
+}
+.background-fail{
+  background-color: #f2dede;
+}
+.control-buttons{
+  padding-top: 2em;
+  padding-bottom: 1em;
+}
+.button-table-action{
+  height: 100%;
+}
+.nopadding{
+  padding: 0 !important;
+}
+.text-center{
+  text-align: center;
+}
